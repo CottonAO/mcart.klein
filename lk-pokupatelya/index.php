@@ -25,7 +25,7 @@ $APPLICATION->SetTitle("Title");
 		"CACHE_TYPE" => "A",
 		"PAGE" => "#SITE_DIR#about/subscr_edit.php",
 		"SHOW_HIDDEN" => "Y",
-		"USE_PERSONALIZATION" => "Y",
+		"USE_PERSONALIZATION" => "N",
 		"COMPONENT_TEMPLATE" => ".default"
 	),
 	false
