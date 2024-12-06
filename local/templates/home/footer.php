@@ -74,7 +74,7 @@
       </div>
       <div class="row pt-5 mt-5 text-center">
         <div class="col-md-12">
-        <?
+          <?
 	      $APPLICATION->IncludeFile(
           SITE_DIR."local/include/copyright.php",
           Array(),
