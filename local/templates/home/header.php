@@ -31,9 +31,10 @@ IncludeTemplateLangFile(__FILE__);
 <body>
 
   <div class="site-loader"></div>
-  <?$APPLICATION->ShowHead();?> 
-  <div class="site-wrap">
 
+  <div class="site-wrap">
+  <?$APPLICATION->ShowHead();?>
+  <?$APPLICATION->ShowPanel();?>  
     <div class="site-mobile-menu">
       <div class="site-mobile-menu-header">
         <div class="site-mobile-menu-close mt-3">
@@ -49,15 +50,31 @@ IncludeTemplateLangFile(__FILE__);
           <div class="col-6 col-md-6">
             <p class="mb-0">
               <a href="#" class="mr-3"><span class="text-black fl-bigmug-line-phone351"></span> <span
-                  class="d-none d-md-inline-block ml-2">+2 102 3923 3922</span></a>
+                  class="d-none d-md-inline-block ml-2"><?
+                  $APPLICATION->IncludeFile(
+                    SITE_DIR."local/include/phone.php",
+                    Array(),
+                    Array("MODE"=>"html")
+                  );
+                  ?></span></a>
               <a href="#"><span class="text-black fl-bigmug-line-email64"></span> <span
-                  class="d-none d-md-inline-block ml-2">info@domain.com</span></a>
+                  class="d-none d-md-inline-block ml-2"><?
+                  $APPLICATION->IncludeFile(
+                    SITE_DIR."local/include/email.php",
+                    Array(),
+                    Array("MODE"=>"html")
+                  );
+                  ?></span></a>
             </p>
           </div>
           <div class="col-6 col-md-6 text-right">
-            <a href="#" class="mr-3"><span class="text-black icon-facebook"></span></a>
-            <a href="#" class="mr-3"><span class="text-black icon-twitter"></span></a>
-            <a href="#" class="mr-0"><span class="text-black icon-linkedin"></span></a>
+          <?
+                  $APPLICATION->IncludeFile(
+                    SITE_DIR."local/include/socials.php",
+                    Array(),
+                    Array("MODE"=>"html")
+                  );
+                  ?>
           </div>
         </div>
       </div>
@@ -67,10 +84,38 @@ IncludeTemplateLangFile(__FILE__);
       <div class="container py-1">
         <div class="row align-items-center">
           <div class="col-8 col-md-8 col-lg-4">
-            <h1 class=""><a href="index.html" class="h5 text-uppercase text-black"><strong>HomeSpace<span
+            <h1 class=""><a href="index.html" class="h5 text-uppercase text-black"><strong><?
+                  $APPLICATION->IncludeFile(
+                    SITE_DIR."local/include/company_name.php",
+                    Array(),
+                    Array("MODE"=>"html")
+                  );
+                  ?><span
                     class="text-danger">.</span></strong></a></h1>
           </div>
           <div class="col-4 col-md-4 col-lg-8">
+          <?$APPLICATION->IncludeComponent(
+	"bitrix:menu", 
+	"horizontal_multilevel", 
+	array(
+		"ROOT_MENU_TYPE" => "top",
+		"MAX_LEVEL" => "3",
+		"CHILD_MENU_TYPE" => "left",
+		"USE_EXT" => "Y",
+		"MENU_CACHE_TYPE" => "N",
+		"MENU_CACHE_TIME" => "36000000",
+		"MENU_CACHE_USE_GROUPS" => "Y",
+		"MENU_CACHE_GET_VARS" => array(
+		),
+		"COMPONENT_TEMPLATE" => "horizontal_multilevel",
+		"DELAY" => "N",
+		"ALLOW_MULTI_SELECT" => "N"
+	),
+	false,
+	array(
+		"ACTIVE_COMPONENT" => "Y"
+	)
+);?>
             <nav class="site-navigation text-right text-md-right" role="navigation">
 
               <div class="d-inline-block d-lg-none ml-md-0 mr-auto py-3"><a href="#"
